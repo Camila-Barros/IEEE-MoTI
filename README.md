@@ -22,7 +22,7 @@ The MoTI solution enables multiple stakeholders, including companies, institutio
 
 Critical messages, transmitted with QoS level 2, are prioritized and authenticated by a dedicated component that applies SHA-256 hashing to ensure data integrity.
 
-![image](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/Fig_Diagrama101.png)
+![image](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/Fig_Diagrama10.png)
 
 
 
