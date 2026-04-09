@@ -530,3 +530,21 @@ systemctl --user daemon-reload
 systemctl --user enable --now moti-viewer.service
 systemctl --user status moti-viewer.service –no-pager
 ```
+
+---
+
+# Final Workflow
+
+1. Publisher sends MQTT messages
+2. Subscriber receives and processes data
+3. Data is stored in IPFS
+4. Metadata is recorded in data.jsonl
+5. Remote users access data securely via HTTPS + mTLS
+
+---
+
+# Reproducibility Notes
+
+- Certificates must be generated locally
+- Network conditions may affect performance
+- AWS infrastructure is required for full replication
