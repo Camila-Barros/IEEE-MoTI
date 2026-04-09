@@ -41,12 +41,11 @@ Critical messages, transmitted with QoS level 2, are prioritized and authenticat
 
 ## Requirements
 
-- Python 3.x  
-- paho-mqtt  
-- ipfshttpclient  
-- Mosquitto MQTT Broker (with TLS/mTLS enabled)  
-- OpenSSL (for certificate generation)  
-- IPFS node (local or remote)
+- [Ubuntu 22.04 LTS](https://ubuntu.com/);
+- [Python 3.12](https://www.python.org/);
+- [OpenSSL](https://www.openssl.org/);
+- [Mosquitto](https://mosquitto.org/);
+- [Amazon Web Services (AWS)](https://aws.amazon.com/pt/free/);
 
 ---
 
