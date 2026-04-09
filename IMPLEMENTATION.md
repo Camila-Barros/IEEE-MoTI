@@ -86,11 +86,9 @@ openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial \
 -out client.crt -days 1825 -sha256
 ```
 
-Configure Mosquitto (mTLS)
+Configure Mosquitto (mTLS) Edit:
 
 ```bash
-Edit config:
-
 sudo nano /etc/mosquitto/conf.d/ssl.conf
 listener 8883
 protocol mqtt
@@ -217,7 +215,7 @@ Configure the network (firewall), creating a security group for remote access to
 
 ```bash
 Port 22 → SSH
-Port 8443 → HTTPS (mTLS)
+Port 8443 → HTTPS (mTLS for secure IPFS access via Nginx)
 Port 4001 → IPFS P2P
 Port 5001 → IPFS API
 ```
@@ -413,7 +411,7 @@ systemctl --user daemon-reload
 systemctl --user enable --now ipfs
 
 # Ver status
-systemctl --user status ipfs –no-pager
+systemctl --user status ipfs --no-pager
 ```
 
 ## 2.3 TLS Nginx Certificates
@@ -452,7 +450,7 @@ Install the Python libraries:
 pip install paho-mqtt requests
 ```
 
-Create a virtual environment (\textit{venv}) and install the necessary packages within it.
+Create a virtual environment (venv) and install the necessary packages within it.
 
 ```bash
 python3 -m venv .venv 
@@ -461,7 +459,7 @@ pip install -U pip requests
 ```
 
 
-## 3.2 Mosquitto and Nginx TLS Certificates}
+## 3.2 Mosquitto and Nginx TLS Certificates
 
 Create a directory within the user's project for the certificates with an absolute path:
 
@@ -494,9 +492,9 @@ chmod 644 ca.crt client.crt nginx-ca.crt nginx-client.crt
 
 ## 3.3 Viewer
 
-In the project directory, create the file `\verb|viewer_csv_from_index.py|` in Python, responsible for periodically reading the file `data.jsonl` via HTTPS+mTLS, generating the corresponding CSV, and automatically saving the result in the `exports` directory. 
+In the project directory, create the file `viewer_csv_from_index.py` in Python, responsible for periodically reading the file `data.jsonl` via HTTPS+mTLS, generating the corresponding CSV, and automatically saving the result in the `exports` directory. 
 
-Create the service `moti-viewer`. to automatically boot into boot and restart if it crashes:
+Create the `moti-viewer` service to start automatically on boot and restart if it fails:
 
 ```bash
 mkdir -p ~/.config/systemd/user
@@ -516,7 +514,7 @@ ExecStart=/home/mila/Projetos/moti-viewer/.venv/bin/python /home/mila/Projetos/m
 Restart=on-failure
 RestartSec=5
 # Variáveis
-Environment=DATA_URL=https://18.216.73.135:8443/moti/data.jsonl
+Environment=DATA_URL=https://<EC2_PUBLIC_IP>:8443/moti/data.jsonl
 Environment=INTERVAL=10
 
 [Install]
