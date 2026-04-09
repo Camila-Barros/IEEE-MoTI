@@ -45,7 +45,8 @@ The MoTI architecture is composed of the following main components:
 
 The logs illustrate the end-to-end data flow, including message publishing, acknowledgment handling, IPFS storage (CID generation), and RTT measurement:
 
-![Execution Logs]([link_da_imagem](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/execution_logs.png))
+![Execution Logs](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/execution_logs.png)
+
 
 ---
 
