@@ -39,7 +39,7 @@ The MoTI architecture is composed of the following main components:
 - Integration with IPFS for distributed storage  
 - External services for data visualization and analysis  
 
-![MoTI Architecture](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/Fig_Diagrama10.png)
+![MoTI Architecture](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/architecture.png)
 
 ## Execution Example
 
