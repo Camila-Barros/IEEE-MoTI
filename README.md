@@ -1,6 +1,6 @@
 # MoTI: An MQTT-Oriented Architecture Enabling Interoperability of IoT Devices in Industry 4.0
 
-Manuscript ID 10400, submitted to IEEE Latin America Transactions
+Manuscript ID 10400, submitted to *IEEE Latin America Transactions*
 
 ---
 
@@ -56,7 +56,7 @@ The MoTI architecture is composed of the following main components:
 
 ## Implementation Guide
 
-For a complete step-by-step implementation, including MQTT configuration, TLS setup, and IPFS integration, please refer to:
+For a complete step-by-step implementation, including environment setup, MQTT configuration, TLS authentication, and IPFS integration, please refer to:
 
 [Implementation Guide](IMPLEMENTATION.md)
 
@@ -90,7 +90,7 @@ The results demonstrate:
 - Python 3.12  
 - OpenSSL  
 - Mosquitto MQTT Broker  
-- AWS EC2 (used for remote IPFS node and distributed infrastructure)   
+- AWS EC2 (used for hosting the remote IPFS node and enabling distributed access)   
 
 ---
 
@@ -98,7 +98,7 @@ The results demonstrate:
 
 1. Configure the MQTT broker with TLS and client authentication  
 2. Generate and configure certificates using OpenSSL  
-3. Configure the IPFS node (local or remote)  
+3. Configure the IPFS node (remote node hosted on AWS EC2)  
 4. Run the publisher script to simulate IoT data transmission  
 5. Run the subscriber script to receive messages and store them in IPFS  
 6. Collect RTT logs generated during execution  
@@ -108,7 +108,7 @@ The results demonstrate:
 
 ## Dataset
 
-The dataset consists of RTT measurements for QoS levels 0, 1, and 2.
+The dataset consists of RTT measurements collected under different QoS levels (0, 1, and 2), with 500 messages per level.
 
 If not provided, the dataset can be generated using the scripts available in this repository following the described workflow.
 
