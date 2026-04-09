@@ -90,7 +90,7 @@ The results demonstrate:
 - Python 3.12  
 - OpenSSL  
 - Mosquitto MQTT Broker  
-- AWS   
+- AWS EC2 (used for remote IPFS node and distributed infrastructure)   
 
 ---
 
