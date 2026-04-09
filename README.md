@@ -32,10 +32,10 @@ Critical messages, transmitted with QoS level 2, are prioritized and authenticat
 ## Repository Structure
 
 - `publish_to_mosquitto.py` → MQTT publisher (IoT device simulator)  
-- `subscribe_and_send_to_thingspeak.py` → subscriber for cloud integration  
-- `mqtt_to_ipfs.py` → subscriber responsible for IPFS storage  
-- `/certs` → TLS certificates (example structure)  
-- `/data` → experimental datasets (if available)  
+- `subscribe_to_IPFS.py` → subscriber for cloud integration  
+- `viewer_csv_from_index.py` → subscriber responsible for IPFS storage  
+- `/certs` → TLS certificates (example structure)  ???
+- `/data` → experimental datasets (if available)  ???
 
 ---
 
