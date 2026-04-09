@@ -41,6 +41,12 @@ The MoTI architecture is composed of the following main components:
 
 ![MoTI Architecture](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/Fig_Diagrama10.png)
 
+## Execution Example
+
+The logs illustrate the end-to-end data flow, including message publishing, acknowledgment handling, IPFS storage (CID generation), and RTT measurement:
+
+![Execution Logs]([link_da_imagem](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/execution_logs.png))
+
 ---
 
 ## Key Features
@@ -67,8 +73,6 @@ For a complete step-by-step implementation, including environment setup, MQTT co
 - `publish_to_mosquitto.py` → MQTT publisher (IoT device simulator)  
 - `subscribe_to_IPFS.py` → subscriber for cloud/IPFS integration  
 - `viewer_csv_from_index.py` → data visualization and retrieval  
-- `/certs` → example structure for TLS certificates (no private keys included)  
-- `/data` → experimental datasets (optional / generated during execution)  
 
 ---
 
