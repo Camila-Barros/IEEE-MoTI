@@ -430,11 +430,103 @@ Transfer certificates from the EC2 server to the local network device (local env
 scp -i ~/aws-keys/ipfs-key.pem ubuntu@IP_DA_EC2:/etc/nginx/certs/nginx-client.* ~/Documentos/MoTI/mqtt_tls_certs/
 ```
 
+# 3. Remote User (Data Access)
 
+## 3.1 Environment Setup
 
-
-
+Update the Ubuntu operating system repositories and packages before starting the installation, ensuring that all components are the latest version:
 
 ```bash
-x
+sudo apt update && sudo apt upgrade -y
+```
+
+Install system dependencies. These tools are essential for secure communication via MQTT and the use of IPFS:
+
+```bash
+sudo apt install -y python3 python3-venv python3-pip mosquitto mosquitto-clients openssl curl
+```
+
+Install the Python libraries:
+
+```bash
+pip install paho-mqtt requests
+```
+
+Create a virtual environment (\textit{venv}) and install the necessary packages within it.
+
+```bash
+python3 -m venv .venv 
+source venv/bin/activate 
+pip install -U pip requests
+```
+
+
+## 3.2 Mosquitto and Nginx TLS Certificates}
+
+Create a directory within the user's project for the certificates with an absolute path:
+
+```bash
+mkdir -p ~/Projetos/moti-viewer/certs
+```
+
+Copy the same certificates created previously to the certs/ folder:
+
+```bash
+# TLS MQTT Mosquitto Certificates:
+ca.crt
+client.crt
+client.key
+
+# TLS Nginx/IPFS Certificates:
+nginx-ca.crt
+nginx-client.crt
+nginx-client.key
+```
+
+To ensure the certificates can be accessed without problems, read permissions must be granted:
+
+```bash
+cd ~/Projetos/moti-viewer/certs
+chmod 600 client.key nginx-client.key
+chmod 644 ca.crt client.crt nginx-ca.crt nginx-client.crt
+```
+
+
+## 3.3 Viewer
+
+In the project directory, create the file `\verb|viewer_csv_from_index.py|` in Python, responsible for periodically reading the file `data.jsonl` via HTTPS+mTLS, generating the corresponding CSV, and automatically saving the result in the `exports` directory. 
+
+Create the service `moti-viewer`. to automatically boot into boot and restart if it crashes:
+
+```bash
+mkdir -p ~/.config/systemd/user
+nano ~/.config/systemd/user/moti-viewer.service
+```
+
+Paste into the editor:
+
+```bash
+[Unit]
+Description=MoTI Viewer (CSV from data.jsonl)
+After=network-online.target
+
+[Service]
+WorkingDirectory=/home/mila/Projetos/moti-viewer
+ExecStart=/home/mila/Projetos/moti-viewer/.venv/bin/python /home/mila/Projetos/moti-viewer/viewer_csv_from_index.py
+Restart=on-failure
+RestartSec=5
+# Variáveis
+Environment=DATA_URL=https://18.216.73.135:8443/moti/data.jsonl
+Environment=INTERVAL=10
+
+[Install]
+WantedBy=default.target
+```
+
+Activate and start the service:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable --now moti-viewer.service
+systemctl --user status moti-viewer.service –no-pager
 ```
