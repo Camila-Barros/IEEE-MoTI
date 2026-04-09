@@ -91,7 +91,7 @@ The results demonstrate:
 
 The following figure shows the distribution of RTT values across different QoS levels.
 
-![RTT Distribution](Fig)
+![RTT Distribution](https://github.com/Camila-Barros/IEEE-MoTI/blob/main/boxplot.png)
 
 ---
 
