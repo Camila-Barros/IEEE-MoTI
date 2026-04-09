@@ -85,7 +85,13 @@ The results demonstrate:
 
 - Stable communication across all QoS levels  
 - Expected trade-offs between latency and delivery guarantees  
-- Higher reliability in QoS 2 scenarios  
+- Higher reliability in QoS 2 scenarios
+
+### RTT Analysis
+
+The following figure shows the distribution of RTT values across different QoS levels.
+
+![RTT Distribution](Fig)
 
 ---
 
